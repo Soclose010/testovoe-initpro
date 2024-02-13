@@ -1,0 +1,11 @@
+{
+    "require": {
+        "imangazaliev/didom": "^2.0",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "myClss\\" : "classes"
+        }
+    }
+}
