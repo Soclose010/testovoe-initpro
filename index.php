@@ -16,19 +16,21 @@ $db = Db::getInstance()->connection($db_config);
 echo "Start parsing...\n";
 echo "Clearing DB...\n";
 clearDB($db);
+echo "Clearing DB complete\n";
+echo "Getting Tenders data...\n";
 $tendersCount = getTendersCount($apiUrl, $client);
 if (!$tendersCount)
 {
     echo "Can't get data from site";
     die();
 }
-$tendersCount = 5;
 $tenders = getTenders($apiUrl, $client, $filterId, $tendersCount);
+echo "Getting Tenders data complete\n";
 $tendersData = [];
 $tendersDocumentsData = [];
 
 foreach ($tenders as $key => $tender) {
-    echo "Parsing Tender ". $key + 1 . " of {$tendersCount}\n";
+    echo "Parsing Tender ". ($key + 1) . " of {$tendersCount}\n";
     $tendersData[$key]['TenderNumber'] = $tender['TenderNumber'];
     $tendersData[$key]['OrganizerName'] = $tender['OrganizerName'];
     $tendersData[$key]['TenderViewUrl'] = $prefix . $tender['TenderViewUrl'];
